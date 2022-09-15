@@ -47,9 +47,9 @@ func checkParenthesis(exp string) bool {
 			s.Push(string(v))
 		} else {
 			// If it is not, check if it is a close parenthesis
-			if _, ok := listOfCloseAndOpenParenthesis[string(v)]; ok {
+			if openTag, ok := listOfCloseAndOpenParenthesis[string(v)]; ok {
 				// If it is, check if the stack is empty or if the last element in the stack is not the corresponding open parenthesis
-				if s.Pop() != listOfCloseAndOpenParenthesis[string(v)] {
+				if s.Pop() != openTag {
 					// If it is, return false
 					return false
 				}
